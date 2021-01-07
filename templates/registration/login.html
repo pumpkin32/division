@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>accounts</title>
+	</head>
+	<body>
+		{% block content %}
+		<form method="POST">
+			{% csrf_token %}
+			{{ person.username }}
+			{{ person.password }}
+			<button type="submit">Войти</button>
+		</form>
+		{% endblock content %}
+	</body>
+</html>

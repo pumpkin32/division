@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>division</title>
+		<style>
+			
+			html, body {
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				flex-direction:column;
+				width:100%;
+				height:100%;
+				padding:0px;
+				margin:0px;
+			}
+			
+			div {
+				width:480px;
+				height:720px;
+				background-color:rgb(240, 240, 240);
+				border:1px solid black;
+			}
+		
+		
+		</style>
+	</head>
+	<body>
+	
+		<p>{{ person }}</p>
+		
+		<div>
+			{% for i in Db %}
+			{{ i.person }}
+			<br>
+			{{ i.message }}
+			<br>
+			{{ i.data }}
+			<br>
+			<br>
+			{% endfor %}
+			
+		</div>
+		<form method="POST" action="ADD/">
+			{% csrf_token %}
+			{{ DbForm }}
+			<input type="submit" value="Отправить">
+		</form>
+		
+		<a href='{% url "Logout" %}'>Logout</a>
+		
+	</body>
+</html>
