@@ -3,7 +3,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from .models import db, dbForm
-import datetime
 
 def about(request):
     if request.user.is_authenticated:
@@ -29,6 +28,5 @@ def ADD(request):
     Db = db()
     Db.person = request.user.username
     Db.message = request.POST.get('content')
-    Db.data = datetime.datetime.now()
     Db.save()
     return HttpResponseRedirect('/about/')
