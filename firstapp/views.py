@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.urls import reverse_lazy
+from django.views import generic
 from .models import db, dbForm
+import os
 
 def about(request):
     if request.user.is_authenticated:
@@ -15,15 +18,22 @@ def about(request):
 
 
 class Logout(LogoutView):
-    template_name = 'registration\Logout.html'
+    template_name = os.path.join('..', 'templates', 'reqistration', 'logout.html')
     
 
 class index(LoginView, AuthenticationForm):
     extra_context = {
         'person':AuthenticationForm
     }
-    template_name = 'registration\login.html'
-    
+    template_name = os.path.join('..', 'templates', 'registration', 'login.html')
+
+
+class signup(generic.CreateView):
+    template_name = os.path.join('..', 'templates', 'index.html')
+    form_class = UserCreationForm
+    success_url = '/'
+
+
 def ADD(request):
     Db = db()
     Db.person = request.user.username

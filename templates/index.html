@@ -37,12 +37,12 @@
 	</head>
 	<body>
 		
-		<div id="class_right">
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Регистрация">
+		</form>
 		
-			<button type="submit">Войти</button>
-			<a href="login">Регистрация</a>
-		
-		</div>
 		
 	</body>
 </html>
