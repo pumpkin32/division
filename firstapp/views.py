@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
-from django.urls import reverse_lazy
 from django.views import generic
 from .models import db, dbForm
 import os
@@ -29,8 +28,8 @@ class index(LoginView, AuthenticationForm):
 
 
 class signup(generic.CreateView):
-    template_name = os.path.join('..', 'templates', 'index.html')
     form_class = UserCreationForm
+    template_name = os.path.join('..', 'templates', 'index.html')
     success_url = '/'
 
 

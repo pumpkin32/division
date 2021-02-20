@@ -8,4 +8,3 @@ class db(models.Model):
     
 class dbForm(forms.Form):
     content = forms.CharField(label = '')
-

@@ -31,7 +31,8 @@
 				color:white;
 				border:1px solid white;
 			}
-			
+
+
 		</style>
 		
 	</head>
@@ -39,10 +40,12 @@
 		
 		<form method="post">
 			{% csrf_token %}
-			{{ form.as_p }}
+			{{ form.username }}
+			{{ form.password1 }}
+			{{ form.password2 }}
+			{{ form.errors }}
 			<input type="submit" value="Регистрация">
 		</form>
-		
-		
+
 	</body>
 </html>
